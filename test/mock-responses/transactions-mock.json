@@ -1,0 +1,131 @@
+{
+    "count": 492,
+    "next": "https://sandbox.belvo.com/api/transactions/?link=3bcd9822-8dd5-4710-a422-d3ac730df48e&page=11",
+    "previous": "https://sandbox.belvo.com/api/transactions/?link=3bcd9822-8dd5-4710-a422-d3ac730df48e&page=9",
+    "results": [
+        {
+            "id": "2fdc149d-6e4e-4889-a4ec-66359e45d119",
+            "account": {
+                "id": "06106946-e4ab-4ee7-b4ad-4eb57b32f815",
+                "link": "3bcd9822-8dd5-4710-a422-d3ac730df48e",
+                "institution": {
+                    "name": "gringotts_mx_retail",
+                    "type": "bank"
+                },
+                "created_at": "2024-04-13T23:51:20.726308Z",
+                "name": "Cartão crédito visa platinum",
+                "type": "Cuentas de efectivo",
+                "agency": "3814042",
+                "number": "169",
+                "balance": {
+                    "current": 36901.71,
+                    "available": 36901.71
+                },
+                "category": "CREDIT_CARD",
+                "currency": "MXN",
+                "loan_data": null,
+                "credit_data": {
+                    "collected_at": "2024-04-12T15:07:37.388580Z",
+                    "credit_limit": 23988,
+                    "cutting_date": "2024-05-25",
+                    "interest_rate": 0,
+                    "minimum_payment": 1383,
+                    "monthly_payment": 9,
+                    "last_payment_date": "2024-02-11",
+                    "next_payment_date": "2024-04-10",
+                    "last_period_balance": 0,
+                    "no_interest_payment": 0
+                },
+                "balance_type": "LIABILITY",
+                "collected_at": "2024-04-13T23:51:14.961952Z",
+                "bank_product_id": "9067974",
+                "last_accessed_at": "2024-04-13T17:41:21",
+                "internal_identification": "8281086",
+                "public_identification_name": "CREDIT_CARD_NUMBER",
+                "public_identification_value": "593"
+            },
+            "created_at": "2024-04-13T23:51:21.547134Z",
+            "category": "Transfers",
+            "subcategory": null,
+            "merchant": {
+                "logo": "https://www.despachoblancomaderaytijerina.com/logo.png",
+                "name": "Despacho Blanco, Madera y Tijerina",
+                "website": "https://www.despachoblancomaderaytijerina.com"
+            },
+            "type": "INFLOW",
+            "amount": 9.79,
+            "status": "PENDING",
+            "balance": 70277.01,
+            "currency": "MXN",
+            "reference": "1235",
+            "value_date": "2024-04-13",
+            "description": "PAGO DE NOMINA",
+            "collected_at": "2024-04-13T23:51:16.350468Z",
+            "observations": null,
+            "accounting_date": "2024-04-06T12:19:44",
+            "internal_identification": "b48a1473"
+        },
+        {
+            "id": "2ff8c740-e500-49a7-9772-dc4914b64b0d",
+            "account": {
+                "id": "bf0008ff-b29f-4d6e-ac6f-717ba7945f82",
+                "link": "3bcd9822-8dd5-4710-a422-d3ac730df48e",
+                "institution": {
+                    "name": "gringotts_mx_retail",
+                    "type": "bank"
+                },
+                "created_at": "2024-04-13T23:51:20.726542Z",
+                "name": "Tarjeta Platino",
+                "type": "Cuentas de efectivo",
+                "agency": "3814041",
+                "number": "3701 None0168",
+                "balance": {
+                    "current": 25324.13,
+                    "available": 25324.13
+                },
+                "category": "CREDIT_CARD",
+                "currency": "MXN",
+                "loan_data": null,
+                "credit_data": {
+                    "collected_at": "2024-04-12T15:07:37.388580Z",
+                    "credit_limit": 23988,
+                    "cutting_date": "2024-05-25",
+                    "interest_rate": 0,
+                    "minimum_payment": 681,
+                    "monthly_payment": 9,
+                    "last_payment_date": "2024-02-11",
+                    "next_payment_date": "2024-04-10",
+                    "last_period_balance": 0,
+                    "no_interest_payment": 0
+                },
+                "balance_type": "LIABILITY",
+                "collected_at": "2024-04-13T23:51:14.984530Z",
+                "bank_product_id": "9067973",
+                "last_accessed_at": "2024-04-11T21:33:22",
+                "internal_identification": "8281086",
+                "public_identification_name": "CREDIT_CARD_NUMBER",
+                "public_identification_value": "1444 None0592"
+            },
+            "created_at": "2024-04-13T23:51:21.552844Z",
+            "category": null,
+            "subcategory": null,
+            "merchant": {
+                "logo": "https://www.laboratoriosguzmnsierra.com/logo.png",
+                "name": "Laboratorios Guzmán-Sierra",
+                "website": "https://www.laboratoriosguzmnsierra.com"
+            },
+            "type": "OUTFLOW",
+            "amount": 412.65,
+            "status": "PENDING",
+            "balance": 70653.32,
+            "currency": "MXN",
+            "reference": "1912",
+            "value_date": "2024-02-19",
+            "description": "Wal-Mart Supera",
+            "collected_at": "2024-04-13T23:51:17.156467Z",
+            "observations": null,
+            "accounting_date": "2024-04-02T15:29:42",
+            "internal_identification": "1b7f7656"
+        }
+    ]
+}
