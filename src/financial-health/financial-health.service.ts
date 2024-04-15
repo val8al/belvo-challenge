@@ -5,11 +5,11 @@ import { AxiosRequestConfig } from 'axios';
 import { Observable, map } from 'rxjs';
 import { ApiKeyGuard } from 'src/api-key/api-key.guard';
 import { PAGINATION_VALUES } from 'src/resources/consts';
-import { UrlBuilder, formatDateTransaction, getBaseUrl } from 'src/resources/utils';
+import { UrlBuilder, getBaseUrl } from 'src/resources/utils';
 
 @Injectable()
 @UseGuards(ApiKeyGuard)
-export class TransactionsFetcherService {
+export class FinancialHealthService {
     constructor(
         private httpService: HttpService,
         private configService: ConfigService
@@ -28,7 +28,6 @@ export class TransactionsFetcherService {
             }
         }
         let urlBuilder = new UrlBuilder(getBaseUrl(env));
-        console.log(requestConfig.headers.Authorization)
         return this.httpService.get(
             urlBuilder
                 .addPath('transactions')
@@ -40,18 +39,24 @@ export class TransactionsFetcherService {
             map(response => this.processData(response.data))
       );
     }
-    processData(data: any): TransactionPresentation[]{
-        let selection: TransactionPresentation[] = []
+    processData(data: any): FinancialHealthPresentation{
+        let healthOutlook: FinancialHealthPresentation = {
+            totalExpenses: 0,
+            totalIncome: 0,
+            revenue: 0
+        }
         data.results.map((transaction) => {
-            selection.push({
-                amount: transaction.amount,
-                type: transaction.type,
-                status: transaction.status,
-                description: transaction.description,
-                created_at: formatDateTransaction(transaction.created_at),
-                merchant_name: transaction.merchant.name
-            })
-        })
-        return selection
+            if (transaction.type === "OUTFLOW"){
+                healthOutlook.totalExpenses -= transaction.amount
+                healthOutlook.revenue -= transaction.amount
+            }else {
+                healthOutlook.totalIncome += transaction.amount
+                healthOutlook.revenue += transaction.amount
+            } 
+        });
+        Object.keys(healthOutlook).forEach((key) =>{
+            healthOutlook[key] = Number(healthOutlook[key].toFixed(2));
+        });
+        return healthOutlook
     }
 }

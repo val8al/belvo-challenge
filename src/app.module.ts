@@ -5,6 +5,10 @@ import { TransactionsFetcherService } from './transactions-fetcher/transactions-
 import { TransactionsCtrlController } from './transactions-ctrl/transactions-ctrl.controller';
 import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
+import { FinancialHealthService } from './financial-health/financial-health.service';
+import { FinancialHealthController } from './financial-health/financial-health.controller';
+import { SpendingCategoriesController } from './spending-categories/spending-categories.controller';
+import { SpendingCategoriesService } from './spending-categories/spending-categories.service';
 
 @Module({
   imports: [
@@ -15,7 +19,7 @@ import { ConfigModule } from '@nestjs/config';
     }),
     HttpModule
   ],
-  controllers: [AppController, TransactionsCtrlController],
-  providers: [AppService, TransactionsFetcherService],
+  controllers: [AppController, TransactionsCtrlController, FinancialHealthController, SpendingCategoriesController],
+  providers: [AppService, TransactionsFetcherService, FinancialHealthService, SpendingCategoriesService],
 })
 export class AppModule {}

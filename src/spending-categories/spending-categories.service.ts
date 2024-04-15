@@ -9,13 +9,11 @@ import { UrlBuilder, formatDateTransaction, getBaseUrl } from 'src/resources/uti
 
 @Injectable()
 @UseGuards(ApiKeyGuard)
-export class TransactionsFetcherService {
+export class SpendingCategoriesService {
     constructor(
         private httpService: HttpService,
         private configService: ConfigService
-    ) {
-
-    }
+    ) {}
     
     fetchData(link: string): Observable<any> {
         const env = this.configService.get<string>('ENV');
@@ -28,7 +26,6 @@ export class TransactionsFetcherService {
             }
         }
         let urlBuilder = new UrlBuilder(getBaseUrl(env));
-        console.log(requestConfig.headers.Authorization)
         return this.httpService.get(
             urlBuilder
                 .addPath('transactions')
@@ -40,17 +37,28 @@ export class TransactionsFetcherService {
             map(response => this.processData(response.data))
       );
     }
-    processData(data: any): TransactionPresentation[]{
-        let selection: TransactionPresentation[] = []
-        data.results.map((transaction) => {
-            selection.push({
-                amount: transaction.amount,
-                type: transaction.type,
-                status: transaction.status,
-                description: transaction.description,
-                created_at: formatDateTransaction(transaction.created_at),
-                merchant_name: transaction.merchant.name
-            })
+    processData(data: any): CategorizedTransactionPresentation[]{
+        let selection: CategorizedTransactionPresentation[] = []
+        let reduced = data.results.reduce(
+            (result: any, currentValue: any) => {
+                (result[currentValue['category']] = 
+                    result[currentValue['category']] || []).push(currentValue);
+
+                return result;
+            }
+        ,{}) 
+
+        Object.keys(reduced).forEach((key)=>{
+            key != "null" && selection.push(
+                {category: key, 
+                amount: Number(reduced[key].reduce((sum,item) => 
+                    item.type === "INFLOW" ? 
+                        sum + item.amount
+                        : sum - item.amount
+                , 0).toFixed(2)), //sum all the occurrences
+                transactions: reduced[key].length
+                }
+            )
         })
         return selection
     }

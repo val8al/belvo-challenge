@@ -44,9 +44,7 @@ export class UrlBuilder {
     }
   }
 
-
-  export const BASE_URL:Map<string,string> = new Map([
-    ["sandbox" , "https://sandbox.belvo.com/api"],
-    ["dev" , "https://dev.belvo.com/api"],
-    ["prod" , "https://api.belvo.com"]
-])
+  export const formatDateTransaction = (date: Date) => {
+    return new Date(date).toLocaleDateString("es-US", 
+    { weekday: 'narrow', year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute:'2-digit' })
+  }
