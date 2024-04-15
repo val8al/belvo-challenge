@@ -28,7 +28,7 @@ export class TransactionsFetcherService {
             }
         }
         let urlBuilder = new UrlBuilder(getBaseUrl(env));
-        console.log(requestConfig.headers.Authorization)
+
         return this.httpService.get(
             urlBuilder
                 .addPath('transactions')
@@ -48,7 +48,7 @@ export class TransactionsFetcherService {
                 type: transaction.type,
                 status: transaction.status,
                 description: transaction.description,
-                created_at: formatDateTransaction(transaction.created_at),
+                created_at: formatDateTransaction(transaction.accounting_date),
                 merchant_name: transaction.merchant.name
             })
         })

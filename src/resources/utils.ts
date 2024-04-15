@@ -30,7 +30,7 @@ export class UrlBuilder {
       const queryString = Object.entries(this.queryParams)
         .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
         .join('&');
-      console.log(`${this.baseUrl}/${pathString}${queryString ? `?${queryString}` : ''}`)
+      //console.log(`${this.baseUrl}/${pathString}${queryString ? `?${queryString}` : ''}`)
       return `${this.baseUrl}/${pathString}${queryString ? `?${queryString}` : ''}`;
     }
   }
@@ -46,5 +46,17 @@ export class UrlBuilder {
 
   export const formatDateTransaction = (date: Date) => {
     return new Date(date).toLocaleDateString("es-US", 
-    { weekday: 'narrow', year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute:'2-digit' })
+    { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute:'2-digit' })
   }
+
+  export const daysFromNowToDate = (targetDateStr: string): number => {
+    const currentDate = new Date();
+    const targetDate = new Date(targetDateStr);
+    currentDate.setHours(0, 0, 0, 0);
+    targetDate.setHours(0, 0, 0, 0);
+
+    const differenceInTime = targetDate.getTime() - currentDate.getTime();
+    const differenceInDays = differenceInTime / (1000 * 3600 * 24);
+
+    return Math.ceil(differenceInDays);
+}
