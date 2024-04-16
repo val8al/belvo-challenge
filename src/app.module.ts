@@ -9,6 +9,8 @@ import { FinancialHealthService } from './financial-health/financial-health.serv
 import { FinancialHealthController } from './financial-health/financial-health.controller';
 import { SpendingCategoriesController } from './spending-categories/spending-categories.controller';
 import { SpendingCategoriesService } from './spending-categories/spending-categories.service';
+import { AccountsOverviewController } from './accounts-overview/accounts-overview.controller';
+import { AccountsOverviewService } from './accounts-overview/accounts-overview.service';
 
 @Module({
   imports: [
@@ -19,7 +21,7 @@ import { SpendingCategoriesService } from './spending-categories/spending-catego
     }),
     HttpModule
   ],
-  controllers: [AppController, TransactionsCtrlController, FinancialHealthController, SpendingCategoriesController],
-  providers: [AppService, TransactionsFetcherService, FinancialHealthService, SpendingCategoriesService],
+  controllers: [AppController, TransactionsCtrlController, FinancialHealthController, SpendingCategoriesController, AccountsOverviewController],
+  providers: [AppService, TransactionsFetcherService, FinancialHealthService, SpendingCategoriesService, AccountsOverviewService],
 })
 export class AppModule {}
