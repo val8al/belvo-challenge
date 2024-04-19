@@ -2,7 +2,7 @@ import { CanActivate, ExecutionContext, Injectable, UnauthorizedException } from
 
 @Injectable()
 export class ApiKeyGuard implements CanActivate {
-  private readonly validApiKey = 'YourValidApiKeyHere';  // Ideally, you should load this from environment variables or a config service
+  private readonly validApiKey = 'YourValidApiKeyHere';  
 
   canActivate(context: ExecutionContext): boolean {
     const request = context.switchToHttp().getRequest();

@@ -3,9 +3,9 @@ import { Injectable, UseGuards } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { AxiosRequestConfig } from 'axios';
 import { Observable, map } from 'rxjs';
-import { ApiKeyGuard } from 'src/api-key/api-key.guard';
-import { PAGINATION_VALUES } from 'src/resources/consts';
-import { UrlBuilder, daysFromNowToDate, getBaseUrl } from 'src/resources/utils';
+import { ApiKeyGuard } from '../api-key/api-key.guard';
+import { PAGINATION_VALUES } from '../resources/consts';
+import { UrlBuilder, daysFromNowToDate, getBaseUrl } from '../resources/utils';
 
 @Injectable()
 @UseGuards(ApiKeyGuard)

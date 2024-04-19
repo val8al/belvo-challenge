@@ -1,12 +1,15 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { TransactionsFetcherService } from './transactions-fetcher.service';
+import { ConfigService } from '@nestjs/config';
+import { HttpModule } from '@nestjs/axios';
 
 describe('TransactionsFetcherService', () => {
   let service: TransactionsFetcherService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [TransactionsFetcherService],
+      imports: [HttpModule],
+      providers: [ConfigService, TransactionsFetcherService],
     }).compile();
 
     service = module.get<TransactionsFetcherService>(TransactionsFetcherService);

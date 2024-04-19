@@ -1,6 +1,6 @@
 import { Controller, Get, Query } from '@nestjs/common';
 import { Observable } from 'rxjs';
-import { TransactionsFetcherService } from 'src/transactions-fetcher/transactions-fetcher.service';
+import { TransactionsFetcherService } from '../transactions-fetcher/transactions-fetcher.service';
 
 @Controller('transactions-ctrl')
 export class TransactionsCtrlController {

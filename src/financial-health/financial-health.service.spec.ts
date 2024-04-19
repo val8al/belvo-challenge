@@ -1,12 +1,15 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { FinancialHealthService } from './financial-health.service';
+import { HttpModule } from '@nestjs/axios';
+import { ConfigService } from '@nestjs/config';
 
 describe('FinancialHealthService', () => {
   let service: FinancialHealthService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [FinancialHealthService],
+      imports: [HttpModule],
+      providers: [FinancialHealthService, ConfigService],
     }).compile();
 
     service = module.get<FinancialHealthService>(FinancialHealthService);
